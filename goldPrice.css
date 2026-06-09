@@ -1,0 +1,575 @@
+/* ==================== 基础变量 ==================== */
+:root {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #334155;
+    --bg-hover: #475569;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --accent-gold: #fbbf24;
+    --accent-silver: #e2e8f0;
+    --accent-platinum: #a78bfa;
+    --accent-palladium: #f472b6;
+    --up: #ef4444;
+    --down: #22c55e;
+    --border: #475569;
+    --border-light: #334155;
+    --radius: 0.75rem;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* ==================== 重置与基础 ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==================== 头部 ==================== */
+.header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    white-space: nowrap;
+}
+
+.logo svg {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+}
+
+.demo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: rgba(251, 191, 36, 0.15);
+    color: var(--accent-gold);
+    padding: 0.125rem 0.625rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.status-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    flex-wrap: wrap;
+}
+
+.last-update {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    white-space: nowrap;
+}
+
+.refresh-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    touch-action: manipulation;
+    white-space: nowrap;
+}
+
+.refresh-btn:hover {
+    background: var(--bg-hover);
+    border-color: var(--text-secondary);
+    transform: translateY(-1px);
+}
+
+.refresh-btn:active {
+    transform: scale(0.95);
+}
+
+.refresh-btn.spinning svg {
+    animation: spin 1s linear infinite;
+}
+
+.live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #22c55e;
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+    flex-shrink: 0;
+}
+
+/* ==================== 主容器 ==================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ==================== 区块标题 ==================== */
+.table-section {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(90deg, rgba(251, 191, 36, 0.05) 0%, transparent 100%);
+}
+
+.section-icon {
+    font-size: 1.125rem;
+}
+
+/* ==================== 表格容器 ==================== */
+.table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+/* ==================== 数据表格 ==================== */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    min-width: 640px;
+}
+
+.data-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.data-table th {
+    background: var(--bg-primary);
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    text-align: left;
+    padding: 0.875rem 1rem;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.data-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-primary);
+    vertical-align: middle;
+    transition: background 0.15s ease;
+}
+
+.data-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.data-table tbody tr:hover {
+    background: rgba(71, 85, 105, 0.4);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 列宽控制 */
+.col-metal { width: 120px; }
+.col-price { width: 120px; }
+.col-change { width: 100px; }
+.col-change-p { width: 90px; }
+.col-bid, .col-ask, .col-open, .col-high, .col-low { width: 110px; }
+
+/* ==================== 金属名称列 ==================== */
+.metal-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.metal-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    flex-shrink: 0;
+}
+
+.metal-icon.gold { background: rgba(251, 191, 36, 0.15); }
+.metal-icon.silver { background: rgba(226, 232, 240, 0.15); }
+.metal-icon.platinum { background: rgba(167, 139, 250, 0.15); }
+.metal-icon.palladium { background: rgba(244, 114, 182, 0.15); }
+
+.metal-name {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.metal-name .name {
+    font-weight: 600;
+    font-size: 0.9375rem;
+}
+
+.metal-name .symbol {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: 'Courier New', monospace;
+}
+
+/* ==================== 价格数字 ==================== */
+.price-value {
+    font-weight: 700;
+    font-size: 1rem;
+    font-variant-numeric: tabular-nums;
+    font-family: 'Courier New', monospace;
+}
+
+/* ==================== 涨跌样式 ==================== */
+.change-up {
+    color: var(--up);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    font-family: 'Courier New', monospace;
+}
+
+.change-down {
+    color: var(--down);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    font-family: 'Courier New', monospace;
+}
+
+.change-neutral {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.change-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+}
+
+.change-badge.up {
+    background: rgba(239, 68, 68, 0.12);
+    color: var(--up);
+}
+
+.change-badge.down {
+    background: rgba(34, 197, 94, 0.12);
+    color: var(--down);
+}
+
+.change-badge.neutral {
+    background: rgba(148, 163, 184, 0.12);
+    color: var(--text-secondary);
+}
+
+/* ==================== 纯度金价表格特殊样式 ==================== */
+#karatTable .data-table {
+    min-width: 480px;
+}
+
+#karatTable th,
+#karatTable td {
+    text-align: center;
+}
+
+#karatTable th:first-child,
+#karatTable td:first-child {
+    text-align: left;
+}
+
+.karat-label {
+    font-weight: 600;
+    color: var(--accent-gold);
+}
+
+.karat-purity {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.price-gold {
+    color: var(--accent-gold);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    font-family: 'Courier New', monospace;
+}
+
+.price-cny {
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+    font-family: 'Courier New', monospace;
+}
+
+/* ==================== 汇率表格 ==================== */
+#forexTable .data-table {
+    min-width: 320px;
+}
+
+#forexTable th,
+#forexTable td {
+    text-align: center;
+}
+
+#forexTable th:first-child,
+#forexTable td:first-child {
+    text-align: left;
+}
+
+.forex-pair {
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+}
+
+.forex-rate {
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
+    font-family: 'Courier New', monospace;
+}
+
+/* ==================== 行闪烁动画 ==================== */
+@keyframes flashUp {
+    0% { background: rgba(239, 68, 68, 0.25); }
+    100% { background: transparent; }
+}
+
+@keyframes flashDown {
+    0% { background: rgba(34, 197, 94, 0.25); }
+    100% { background: transparent; }
+}
+
+.flash-up {
+    animation: flashUp 0.8s ease-out;
+}
+
+.flash-down {
+    animation: flashDown 0.8s ease-out;
+}
+
+/* ==================== 加载遮罩 ==================== */
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.loading-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent-gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* ==================== Toast 提示 ==================== */
+.toast {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    z-index: 1001;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    max-width: 90vw;
+    text-align: center;
+    box-shadow: var(--shadow);
+    pointer-events: none;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+.success-toast {
+    background: #16a34a;
+    color: white;
+}
+
+.error-toast {
+    background: #dc2626;
+    color: white;
+}
+
+/* ==================== 页脚 ==================== */
+.footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--text-secondary);
+    font-size: 0.8125rem;
+    border-top: 1px solid var(--border);
+    margin-top: 1rem;
+    line-height: 1.8;
+}
+
+/* ==================== 动画关键帧 ==================== */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* ==================== 响应式适配 ==================== */
+@media (max-width: 640px) {
+    .header-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .status-bar {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .logo {
+        font-size: 1.125rem;
+    }
+
+    .container {
+        padding: 1rem 0.75rem;
+        gap: 1rem;
+    }
+
+    .section-title {
+        padding: 0.875rem 1rem;
+        font-size: 0.9375rem;
+    }
+
+    .data-table {
+        font-size: 0.875rem;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 0.75rem 0.875rem;
+    }
+
+    .metal-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
+    .price-value {
+        font-size: 0.9375rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding: 2rem 1rem;
+    }
+
+    .data-table {
+        font-size: 1rem;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 1.125rem 1.25rem;
+    }
+}

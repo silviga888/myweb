@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- 微信/通用分享优化 -->
+    <title>实时金价行情 - 黄金白银铂金钯金价格追踪</title>
+    <meta name="description" content="实时追踪国际金价、银价、铂金、钯金行情，提供24K/18K等各纯度参考价格，支持自动刷新。">
+    
+    <!-- Open Graph 协议（微信、Facebook等都会读取） -->
+    <meta property="og:title" content="实时金价行情">
+    <meta property="og:description" content="实时追踪黄金、白银、铂金、钯金国际价格">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://你的域名.com/share-thumb.jpg">
+    
+    <!-- 微信专用（部分版本有效） -->
+    <meta name="wx:title" content="实时金价行情">
+    <meta name="wx:description" content="点击查看今日黄金、白银、铂金最新价格">
+    <meta name="wx:image" content="https://你的域名.com/share-thumb.jpg">
+    <link rel="stylesheet" href="/myweb/goldPrice.css">
+<base target="_blank">
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>正在初始化行情数据...</p>
+    </div>
+
+    <div class="toast success-toast" id="successToast"></div>
+    <div class="toast error-toast" id="errorToast"></div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 6v6l4 2"/>
+                </svg>
+                <span>实时金价行情</span>
+            </div>
+            <div class="status-bar">
+                <div class="live-indicator">
+                    <span class="live-dot"></span>
+                    <span>LIVE</span>
+                </div>
+                <div class="last-update" id="lastUpdate">
+                    <span>更新于: --:--:--</span>
+                </div>
+                <button class="refresh-btn" id="refreshBtn" onclick="manualRefresh()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+                    </svg>
+                    刷新
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 金属行情主表 -->
+        <section class="table-section">
+            <h2 class="section-title">
+                <span class="section-icon">📊</span>
+                贵金属实时行情
+            </h2>
+            <div class="table-wrapper">
+                <table class="data-table" id="mainTable">
+                    <thead>
+                        <tr>
+                            <th class="col-metal">金属</th>
+                            <th class="col-price">最新价</th>
+                            <th class="col-change">涨跌额</th>
+                            <th class="col-change-p">涨跌幅</th>
+                            <th class="col-bid">买入价</th>
+                            <th class="col-ask">卖出价</th>
+                            <th class="col-open">开盘价</th>
+                            <th class="col-high">最高价</th>
+                            <th class="col-low">最低价</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mainTableBody">
+                        <!-- JS填充 -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 黄金纯度参考价表 -->
+        <section class="table-section">
+            <h2 class="section-title">
+                <span class="section-icon">🏅</span>
+                黄金各纯度每克参考价（美元）
+            </h2>
+            <div class="table-wrapper">
+                <table class="data-table" id="karatTable">
+                    <thead>
+                        <tr>
+                            <th>纯度</th>
+                            <th>含金量</th>
+                            <th>美元/克</th>
+                            <th>人民币/克（估算）</th>
+                        </tr>
+                    </thead>
+                    <tbody id="karatTableBody">
+                        <!-- JS填充 -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 汇率表 -->
+        <section class="table-section">
+            <h2 class="section-title">
+                <span class="section-icon">💱</span>
+                主要货币汇率
+            </h2>
+            <div class="table-wrapper">
+                <table class="data-table" id="forexTable">
+                    <thead>
+                        <tr>
+                            <th>货币对</th>
+                            <th>汇率</th>
+                        </tr>
+                    </thead>
+                    <tbody id="forexTableBody">
+                        <!-- JS填充 -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>数据为模拟演示，仅供界面效果参考，非真实行情。</p>
+        <p>更新间隔：30秒 · 替换真实API即可接入实盘数据</p>
+    </footer>
+
+    <script src="/myweb/goldPrice.js"></script>
+</body>
+</html>
