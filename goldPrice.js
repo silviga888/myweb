@@ -112,13 +112,13 @@ function updateUnitHeaders() {
     const unitText = isUSD ? '美元/盎司' : '人民币/克';
     const unitShort = isUSD ? '美元' : '人民币';
 
-    $('thPrice').innerHTML = `最新价<span class="th-unit">（${unitText}）</span>`;
-    $('thChange').innerHTML = `涨跌额<span class="th-unit">（${unitShort}）</span>`;
-    $('thBid').innerHTML = `买入价<span class="th-unit">（${unitText}）</span>`;
-    $('thAsk').innerHTML = `卖出价<span class="th-unit">（${unitText}）</span>`;
-    $('thOpen').innerHTML = `开盘价<span class="th-unit">（${unitText}）</span>`;
-    $('thHigh').innerHTML = `最高价<span class="th-unit">（${unitText}）</span>`;
-    $('thLow').innerHTML = `最低价<span class="th-unit">（${unitText}）</span>`;
+    $('thPrice').innerHTML = `最新价`;
+    $('thChange').innerHTML = `涨跌额`;
+    $('thBid').innerHTML = `买入价`;
+    $('thAsk').innerHTML = `卖出价`;
+    $('thOpen').innerHTML = `开盘价`;
+    $('thHigh').innerHTML = `最高价`;
+    $('thLow').innerHTML = `最低价`;
 }
 
 // ==================== 模拟数据生成 ====================
